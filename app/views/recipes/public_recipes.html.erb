@@ -1,0 +1,30 @@
+<h3>Public Recipes </h3>
+
+<% if @recipes.any? %>
+<ul class="list-group">
+  <% @recipes.each do |recipe| %>
+    <% if recipe.public %>
+      <li class="list-group-item list-group-item list-group-item-action list-group-item-info">
+        <div class="recipe-name">
+          <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
+        </div>
+        <div class="recipe-description">
+          <%= recipe.description %>
+        </div>
+        <div class="food-count">
+          Food Items: <%= recipe.foods.count %>
+        </div>
+        <div class="total-price">
+          Total Price: <%= number_to_currency(recipe.total_price) %>
+        </div>
+        <div class="user-name">
+          By: <%= recipe.user.name %>
+        </div>
+      </li>
+      <br>
+    <% end %>
+  <% end %>
+</ul>
+<% else %>
+<p>Sorry, no public recipes are available.</p>
+<% end %>

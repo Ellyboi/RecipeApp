@@ -1,0 +1,36 @@
+<h1>Create a New Recipe</h1>
+
+<%= form_with(model: @recipe, url: recipes_path) do |form| %>
+  <div>
+    <% form.label :name %>
+    <%= form.text_field :name, class:"form-control", placeholder:"name" %>
+  </div>
+<br/>
+  <div>
+    <% form.label :preparation_time %>
+    <%= form.number_field :preparation_time, class:"form-control", placeholder:"preparation_time", step: 1, min: 0 %>
+    minutes
+  </div>
+<br/>
+  <div>
+    <% form.label :cooking_time %>
+    <%= form.number_field :cooking_time, class:"form-control", placeholder:"cookin_time", step: 1, min: 0 %>
+    minutes
+  </div>
+<br/>
+  <div>
+    <% form.label :description %>
+    <%= form.text_area :description, class:"form-control", placeholder:"description" %>
+  </div>
+  <br/>
+  <div class="form-check form-switch">
+    <%= form.check_box :public, class: "form-check-input bg-success", id: "flexSwitchCheckChecked" %>
+    <%= form.label :public, class: "form-check-label", for: "flexSwitchCheckChecked" do %>
+      Public
+    <% end %>
+</div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

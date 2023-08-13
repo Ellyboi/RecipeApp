@@ -1,0 +1,34 @@
+<h3>All Recipes</h3>
+
+<p>
+<% if user_signed_in? %>
+  <%= button_to "Add New Recipe", new_recipe_path, method: :get %>
+  <%else%>
+  <h3>Sign in to view and create your recipes</h3>
+<% end %>
+</p>
+
+<% if @recipes.any? %>
+<ul class="list-group">
+  <% @recipes.each do |recipe| %>
+    <li class="list-group-item list-group-item list-group-item-action list-group-item-info">
+    <div class="recipe-name">
+      <%= link_to recipe.name, recipe_path(recipe) %>
+    </div>
+    <div class="recipe-description">
+      <%= recipe.description %>
+    </div>
+    <% if user_signed_in? %>
+      <%= button_to "Delete", recipe_path(recipe), class:"btn btn-list-group-item list-group-item-danger", method: :delete %>
+      <% end %>
+    </li>
+    <br>
+  <% end %>
+</ul>
+<% else %>
+<% if user_signed_in? %>
+    <div>
+      <h3>Create a recipe to see it here.🙂</h3>
+    </div>
+  <% end %>
+<% end %>
