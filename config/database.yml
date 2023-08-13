@@ -14,4 +14,8 @@ development:
 test:
   <<: *default
   database: recipe_app_test9
+
+  production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   
