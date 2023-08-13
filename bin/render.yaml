@@ -1,18 +1,18 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: digitsclick
+    databaseName: digitsclick_a2pp
+    user: elijah
 
 services:
   - type: web
-    name: mysite
+    name: elas
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysite
+          name: digitsclick_a2pp
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
